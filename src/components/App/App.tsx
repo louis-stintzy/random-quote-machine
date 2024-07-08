@@ -24,8 +24,7 @@ function App() {
 
   const boxStyle = {
     width: '500px',
-    height: '250px',
-    padding: '20px',
+    padding: '40px 50px',
     backgroundColor: '#f8efed',
     borderRadius: '5px',
     border: 'none',
@@ -33,6 +32,7 @@ function App() {
 
   const containerStyle = {
     display: 'flex',
+    flexDirection: 'column' as const,
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
@@ -46,6 +46,23 @@ function App() {
       <div id="box-container" style={containerStyle}>
         <div id="quote-box" style={boxStyle}>
           <QuoteBox color={color} quote={quote} handleClick={handleClick} />
+        </div>
+        <div id="footer">
+          <p style={{ color: '#f8efed', fontSize: '0.75em', marginTop: '8px' }}>
+            by{' '}
+            <a
+              href="https://github.com/louis-stintzy"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: '#f8efed',
+                fontWeight: 'bold',
+                textDecoration: 'none',
+              }}
+            >
+              lstz
+            </a>
+          </p>
         </div>
       </div>
     </div>
