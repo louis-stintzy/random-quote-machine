@@ -3,6 +3,7 @@ import QuoteBox from '../QuoteBox/QuoteBox';
 import quotes from '../../constants/quotes';
 import { colors, colorPalette } from '../../constants/colors';
 import './App.scss';
+import Footer from '../Footer/Footer';
 
 function App() {
   const findNewQuote = () => {
@@ -27,14 +28,6 @@ function App() {
     }, 500);
   };
 
-  const boxStyle = {
-    width: '500px',
-    padding: '40px 50px',
-    backgroundColor: '#f8efed',
-    borderRadius: '5px',
-    border: 'none',
-  };
-
   const containerStyle = {
     display: 'flex',
     flexDirection: 'column' as const,
@@ -49,31 +42,13 @@ function App() {
   return (
     <div className="App">
       <div id="box-container" style={containerStyle}>
-        <div id="quote-box" style={boxStyle}>
-          <QuoteBox
-            color={color}
-            quote={quote}
-            isFadingOut={isFadingOut}
-            handleClick={handleClick}
-          />
-        </div>
-        <div id="footer">
-          <p style={{ color: '#f8efed', fontSize: '0.75em', marginTop: '8px' }}>
-            by{' '}
-            <a
-              href="https://github.com/louis-stintzy"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                color: '#f8efed',
-                fontWeight: 'bold',
-                textDecoration: 'none',
-              }}
-            >
-              lstz
-            </a>
-          </p>
-        </div>
+        <QuoteBox
+          color={color}
+          quote={quote}
+          isFadingOut={isFadingOut}
+          handleClick={handleClick}
+        />
+        <Footer />
       </div>
     </div>
   );
