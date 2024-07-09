@@ -1,12 +1,14 @@
 import { useState } from 'react';
+import QuoteAndAuthor from '../QuoteAndAuthor/QuoteAndAuthor';
 
 interface QuoteBoxProps {
   color: { color: string; lightenedColor: string };
   quote: { key: number; quote: string; citation: string; author: string };
+  isFadingOut: boolean;
   handleClick: () => void;
 }
 
-function QuoteBox({ color, quote, handleClick }: QuoteBoxProps) {
+function QuoteBox({ color, quote, isFadingOut, handleClick }: QuoteBoxProps) {
   const [language, setLanguage] = useState('en');
   const [btnIsHovered, setBtnIsHovered] = useState<string | null>(null);
   const handleChangeLanguage = () => {
@@ -20,24 +22,6 @@ function QuoteBox({ color, quote, handleClick }: QuoteBoxProps) {
   const tweetUrl = `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${encodeURIComponent(
     `${language === 'en' ? quote.quote : quote.citation} - ${quote.author}`
   )}`;
-
-  const textStyle = {
-    color: color.color,
-    fontSize: '1.75em',
-    textAlign: 'center' as const,
-    fontWeight: '500',
-    marginBottom: '10px',
-    transition: 'color 0.75s ease',
-  };
-
-  const authorStyle = {
-    color: color.color,
-    fontSize: '1.25em',
-    textAlign: 'right' as const,
-    fontWeight: '400',
-    marginBottom: '20px',
-    transition: 'color 0.75s ease',
-  };
 
   const buttonContainerStyle = {
     display: 'flex',
@@ -58,20 +42,18 @@ function QuoteBox({ color, quote, handleClick }: QuoteBoxProps) {
     borderRadius: '3px',
     border: 'none',
     cursor: 'pointer',
-    transition: 'background-color 0.75s ease',
+    transition: 'background-color 1s ease',
   });
 
   return (
     <div>
-      {/* //----- Text ----- */}
-      <div id="text" style={textStyle}>
-        <i className="fa fa-quote-left" style={{ marginRight: '10px' }} />
-        <span>{language === 'en' ? quote.quote : quote.citation} </span>
-      </div>
-      {/* //----- Author ----- */}
-      <div id="author" style={authorStyle}>
-        - {quote.author}
-      </div>
+      <QuoteAndAuthor
+        color={color}
+        quote={quote}
+        isFadingOut={isFadingOut}
+        language={language}
+      />
+
       {/* //----- Buttons ----- */}
       <div id="buttons-container" style={buttonContainerStyle}>
         <div id="left-buttons">

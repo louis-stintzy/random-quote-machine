@@ -15,11 +15,16 @@ function App() {
   };
 
   const [quote, setQuote] = useState(findNewQuote());
+  const [isFadingOut, setIsFadingOut] = useState(false);
   const [color, setColor] = useState(findNewColor());
 
   const handleClick = () => {
-    setQuote(findNewQuote());
     setColor(findNewColor());
+    setIsFadingOut(true);
+    setTimeout(() => {
+      setQuote(findNewQuote());
+      setIsFadingOut(false);
+    }, 500);
   };
 
   const boxStyle = {
@@ -38,14 +43,19 @@ function App() {
     width: '100%',
     height: '100vh',
     backgroundColor: color.color,
-    transition: 'background-color 0.75s ease',
+    transition: 'background-color 1s ease',
   };
 
   return (
     <div className="App">
       <div id="box-container" style={containerStyle}>
         <div id="quote-box" style={boxStyle}>
-          <QuoteBox color={color} quote={quote} handleClick={handleClick} />
+          <QuoteBox
+            color={color}
+            quote={quote}
+            isFadingOut={isFadingOut}
+            handleClick={handleClick}
+          />
         </div>
         <div id="footer">
           <p style={{ color: '#f8efed', fontSize: '0.75em', marginTop: '8px' }}>
