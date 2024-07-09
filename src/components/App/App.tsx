@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import QuoteBox from '../QuoteBox/QuoteBox';
 import quotes from '../../constants/quotes';
-import colors from '../../constants/colors';
+import { colors, colorPalette } from '../../constants/colors';
 import './App.scss';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     return randomQuote;
   };
   const findNewColor = () => {
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    const randomColor = colorPalette[Math.floor(Math.random() * colors.length)];
     return randomColor;
   };
 
@@ -37,7 +37,7 @@ function App() {
     alignItems: 'center',
     width: '100%',
     height: '100vh',
-    backgroundColor: color,
+    backgroundColor: color.color,
     transition: 'background-color 0.75s ease',
   };
 

@@ -1,13 +1,14 @@
 import { useState } from 'react';
 
 interface QuoteBoxProps {
-  color: string;
+  color: { color: string; lightenedColor: string };
   quote: { key: number; quote: string; citation: string; author: string };
   handleClick: () => void;
 }
 
 function QuoteBox({ color, quote, handleClick }: QuoteBoxProps) {
   const [language, setLanguage] = useState('en');
+  const [btnIsHovered, setBtnIsHovered] = useState<string | null>(null);
   const handleChangeLanguage = () => {
     if (language === 'en') {
       setLanguage('fr');
@@ -21,7 +22,7 @@ function QuoteBox({ color, quote, handleClick }: QuoteBoxProps) {
   )}`;
 
   const textStyle = {
-    color,
+    color: color.color,
     fontSize: '1.75em',
     textAlign: 'center' as const,
     fontWeight: '500',
@@ -30,7 +31,7 @@ function QuoteBox({ color, quote, handleClick }: QuoteBoxProps) {
   };
 
   const authorStyle = {
-    color,
+    color: color.color,
     fontSize: '1.25em',
     textAlign: 'right' as const,
     fontWeight: '400',
@@ -50,15 +51,15 @@ function QuoteBox({ color, quote, handleClick }: QuoteBoxProps) {
     gap: '10px',
   };
 
-  const buttonStyle = {
-    backgroundColor: color,
+  const buttonStyle = (btn: string | null) => ({
+    backgroundColor: btnIsHovered === btn ? color.lightenedColor : color.color,
     color: 'white',
     padding: '10px',
     borderRadius: '3px',
     border: 'none',
     cursor: 'pointer',
     transition: 'background-color 0.75s ease',
-  };
+  });
 
   return (
     <div>
@@ -78,12 +79,14 @@ function QuoteBox({ color, quote, handleClick }: QuoteBoxProps) {
             href={tweetUrl}
             id="tweet-quote"
             style={{
-              ...buttonStyle,
+              ...buttonStyle('tweetBtn'),
               textDecoration: 'none',
               display: 'inline-block',
             }}
             target="_blank"
             rel="noopener noreferrer"
+            onMouseEnter={() => setBtnIsHovered('tweetBtn')}
+            onMouseLeave={() => setBtnIsHovered(null)}
           >
             <i className="fab fa-twitter" />
             <span style={{ marginLeft: '5px' }}>Tweet</span>
@@ -94,7 +97,9 @@ function QuoteBox({ color, quote, handleClick }: QuoteBoxProps) {
             type="button"
             id="change-language"
             onClick={handleChangeLanguage}
-            style={buttonStyle}
+            style={buttonStyle('changeBtn')}
+            onMouseEnter={() => setBtnIsHovered('changeBtn')}
+            onMouseLeave={() => setBtnIsHovered(null)}
           >
             <i className="fa-solid fa-language" />
             <span style={{ marginLeft: '5px' }}>Change</span>
@@ -103,7 +108,9 @@ function QuoteBox({ color, quote, handleClick }: QuoteBoxProps) {
             type="button"
             id="new-quote"
             onClick={handleClick}
-            style={buttonStyle}
+            style={buttonStyle('newBtn')}
+            onMouseEnter={() => setBtnIsHovered('newBtn')}
+            onMouseLeave={() => setBtnIsHovered(null)}
           >
             <i className="fa-solid fa-plus" />
             <span style={{ marginLeft: '5px' }}>

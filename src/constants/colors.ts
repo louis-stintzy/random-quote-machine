@@ -1,4 +1,4 @@
-const colors = [
+export const colors = [
   '#3E2723',
   '#689F38',
   '#AB47BC',
@@ -18,4 +18,22 @@ const colors = [
   '#978279',
 ];
 
-export default colors;
+export const colorPalette = [
+  { color: '#3E2723', lightenedColor: '#5A3A36' },
+  { color: '#689F38', lightenedColor: '#83B852' },
+  { color: '#AB47BC', lightenedColor: '#C364D3' },
+  { color: '#FF5252', lightenedColor: '#FF7373' },
+  { color: '#D7CCC8', lightenedColor: '#E7DEDA' },
+  { color: '#37474F', lightenedColor: '#506670' },
+  { color: '#4CAF50', lightenedColor: '#6BCF6F' },
+  { color: '#F44336', lightenedColor: '#F66860' },
+  { color: '#00796B', lightenedColor: '#339E8E' },
+  { color: '#6A1B9A', lightenedColor: '#8533B5' },
+  { color: '#8E24AA', lightenedColor: '#A444C1' },
+  { color: '#FF4081', lightenedColor: '#FF6299' },
+  { color: '#00ACC1', lightenedColor: '#33C4D9' },
+  { color: '#FF9800', lightenedColor: '#FFB033' },
+  { color: '#A8998E', lightenedColor: '#C1B0A6' },
+  { color: '#8A756D', lightenedColor: '#A38E85' },
+  { color: '#978279', lightenedColor: '#AF9A91' },
+];
