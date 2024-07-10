@@ -1,3 +1,5 @@
+import './QuoteAndAuthor.scss';
+
 interface QuoteAndAuthorProps {
   color: { color: string; lightenedColor: string };
   quote: { key: number; quote: string; citation: string; author: string };
@@ -18,7 +20,7 @@ function QuoteAndAuthor({
 
   const textStyle = {
     color: color.color,
-    fontSize: '1.75em',
+    // fontSize: '1.75em',
     textAlign: 'center' as const,
     fontWeight: '500',
     marginBottom: '10px',
@@ -27,7 +29,7 @@ function QuoteAndAuthor({
 
   const authorStyle = {
     color: color.color,
-    fontSize: '1.25em',
+    // fontSize: '1.25em',
     textAlign: 'right' as const,
     fontWeight: '400',
     marginBottom: '20px',

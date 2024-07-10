@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import './Buttons.scss';
+
 interface ButtonsProps {
   color: { color: string; lightenedColor: string };
   quote: { key: number; quote: string; citation: string; author: string };
@@ -56,6 +58,7 @@ function Buttons({
         <a
           href={tweetUrl}
           id="tweet-quote"
+          className="btn"
           style={{
             ...buttonStyle('tweetBtn'),
             textDecoration: 'none',
@@ -67,31 +70,37 @@ function Buttons({
           onMouseLeave={() => setBtnIsHovered(null)}
         >
           <i className="fab fa-twitter" />
-          <span style={{ marginLeft: '5px' }}>Tweet</span>
+          <span className="buttonText" style={{ marginLeft: '5px' }}>
+            Tweet
+          </span>
         </a>
       </div>
       <div id="right-buttons" style={rightButtonsStyle}>
         <button
           type="button"
           id="change-language"
+          className="btn"
           onClick={handleChangeLanguage}
           style={buttonStyle('changeBtn')}
           onMouseEnter={() => setBtnIsHovered('changeBtn')}
           onMouseLeave={() => setBtnIsHovered(null)}
         >
           <i className="fa-solid fa-language" />
-          <span style={{ marginLeft: '5px' }}>Change</span>
+          <span className="buttonText" style={{ marginLeft: '5px' }}>
+            Change
+          </span>
         </button>
         <button
           type="button"
           id="new-quote"
+          className="btn"
           onClick={handleClick}
           style={buttonStyle('newBtn')}
           onMouseEnter={() => setBtnIsHovered('newBtn')}
           onMouseLeave={() => setBtnIsHovered(null)}
         >
           <i className="fa-solid fa-plus" />
-          <span style={{ marginLeft: '5px' }}>
+          <span className="buttonText" style={{ marginLeft: '5px' }}>
             {language === 'en' ? 'New' : 'Nouvelle'}
           </span>
         </button>
