@@ -1,19 +1,29 @@
-@media (min-width: 360px) {
-  #text {
-    font-size: 1.75rem;
-  }
-
-  #author {
-    font-size: 1.25rem;
-  }
-}
-
-@media (max-width: 360px) {
+@media (max-width: 576px) {
   #text {
     font-size: 1.25rem;
   }
 
   #author {
     font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 576px) {
+  #text {
+    font-size: 1.5rem;
+  }
+
+  #author {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  #text {
+    font-size: 1.75rem;
+  }
+
+  #author {
+    font-size: 1.25rem;
   }
 }
